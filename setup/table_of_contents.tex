@@ -1,0 +1,16 @@
+
+
+% configure table of contents
+% \makeatletter
+% \renewcommand*\tableofcontents{\@starttoc{toc}}
+% \makeatother
+
+\newpage
+% set page header
+\ifeng
+ \fancyhead[L]{Contents}
+\else
+ \fancyhead[L]{Inhaltsverzeichnis}
+\fi
+% create table of contents
+\tableofcontents

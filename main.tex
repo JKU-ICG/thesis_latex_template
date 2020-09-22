@@ -1,0 +1,141 @@
+% v2020-09-21
+
+\documentclass[11pt,a4paper]{article} %coverpage uses 12pt
+\usepackage[utf8]{inputenc}
+
+\usepackage{fancyhdr} % Fancy headings
+\usepackage{amsmath} % mathematical features 
+\usepackage{multirow}
+\usepackage{xspace}
+\usepackage{longtable}
+\usepackage{rotating}
+\usepackage{listings} % source code printing
+\usepackage{hyperref} % links in pdf
+\usepackage{booktabs,colortbl} % more commands for tables and coloring
+\usepackage{geometry}
+\usepackage[ngerman,english]{babel}
+\usepackage{graphicx} % figures
+\usepackage{float} % better positioning for floats (figures, tables)
+\usepackage[T1]{fontenc}
+
+% Numbering for equations with section.equation number
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+% Numbering for figures with section.figure number
+\renewcommand\thefigure{\arabic{section}.\arabic{figure}}
+% Numbering for tables with section.table number
+\renewcommand\thetable{\arabic{section}.\arabic{table}}
+
+% Each section starts on a new page
+\let\stdsection\section 
+% Each section starts on a new page
+\renewcommand\section{\clearpage\newpage\stdsection}
+
+
+% coverpage template: https://www.jku.at/studieren/studium-von-a-z/abschlussarbeiten/masterarbeit/
+% master thesis document structure: http://informatik.jku.at/teaching/stuko/news/11-03-30.html
+
+
+% ToDo for student:
+% - Edit coversheet.tex (language, title, name, ...)
+% - Write abstract (german/english) 
+%   - Bachelor Thesis: in german or english depending on the language of your thesis
+%   - Master Thesis: in german and english
+% - Write content of the thesis
+% - Add references to the reference.bib
+
+
+\begin{document}
+
+% insert coversheet
+\input{coversheet}
+
+% set up of all pages and add the first pages (abstract and TOC)
+\input{setup/setup_pages}
+
+%------------------------------------
+%         Start of Content 
+%------------------------------------
+
+\section{Introduction}
+\subsection{Subsection}
+\subsubsection{Subsubsection}
+
+\section{Additional Chapter}
+\subsection{Additional Chapter Level 2}
+\subsubsection{Additional Chapter Level 3}
+
+\section{Introduction to \LaTeX}
+Since \LaTeX\ is widely used in academia and industry, there are many free introductions to the language. There is the wiki guide at \url{https://en.wikibooks.org/wiki/LaTeX} and also a guide from the Overleaf Online-LaTeX-Editor at \url{https://de.overleaf.com/learn}. This template was created for the Overleaf Online-LaTeX-Editor.
+
+\subsection{Basic Functionality}
+In this section, some examples are given of the basic elements used in a thesis.
+For most \LaTeX\ commands optional arguments are available, which can be looked up in the various documentations for the commands.
+
+\subsubsection{Tables}
+A \verb|tabular| environment is used to create tables in \LaTeX.
+\begin{table}[h] % placement specifier
+  \centering
+  \begin{tabular}{ll}
+    \toprule
+    Animal Class & Species \\
+    \midrule
+    \multirow{4}{*}{Mammal} & Elephant\\
+                            & Horse \\
+                            & Whale \\
+                            & Panda \\
+    \midrule
+    \multirow{3}{*}{Reptile} & Snake \\
+                             & Turtle \\
+                             & Crocodile \\
+    \midrule
+    Fish & Shark \\
+    \midrule
+    \multirow{2}{*}{Insect} & Bee\\
+                            & Ant\\
+    \bottomrule
+  \end{tabular}
+  \caption{Adapted example from the \LaTeX\ guide at \url{https://en.wikibooks.org/wiki/LaTeX/Tables}. This example uses options from the \texttt{booktabs} the \texttt{multirow} package.}
+  \label{tab:intro} % \label has to be placed AFTER \caption to produce correct cross-references.
+\end{table}
+
+\subsubsection{Images}
+An image is added to a document with the \verb|\includegraphics| command as shown in Figure~\ref{fig:jku_logo}.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{img/JKU_Logo.png}
+    \caption{JKU Logo}
+    \label{fig:jku_logo}
+\end{figure}
+
+\subsubsection{Mathematical Expressions}
+One of the biggest advantages of \LaTeX\ is the creation of complex mathematical expressions. It is possible to insert the mathematical expression inline $\sum_{k=1}^{n} {k} = \frac{n+(n+1)}{2}$ or outside of the text as \[ \sum_{k=1}^{n} {k} = \frac{n+(n+1)}{2} \] or as numbered equation with
+\begin{equation}
+\sum_{k=1}^{n} {k} = \frac{n+(n+1)}{2}.
+\end{equation}
+
+
+\subsection{References}
+The reference are an important part for any academic/research writing. \LaTeX\ supports different types of bibliographies to insert the references. This template uses the \textbf{BibTeX} system.
+The \verb|\cite| command, makes it possible to reference entries in a \verb|.bib| file out of the text stream, e.g., as~\cite{2019_bioinformatics_ordino}.
+It is also possible to add citations in captions of figures, tables, and equations, see Figure~\ref{fig:munzner_channels}
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/Munzner_Channels.png}
+    \caption{The effectiveness of channels that modify the appearance of marks~\cite{munzner_visualization_2014}}
+    \label{fig:munzner_channels}
+\end{figure}
+
+
+%------------------------------------
+%         End of Content 
+%------------------------------------
+% insert references
+% add the references to the references.bib file
+\input{setup/references}
+
+
+% insert  affidavit / eidesstattliche erklärung
+\input{setup/affidavit}
+
+\end{document}

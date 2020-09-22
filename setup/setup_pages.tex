@@ -1,0 +1,51 @@
+% set page margins for document except coversheet
+\newgeometry{left=2.2cm,right=2.2cm,top=3cm,bottom=3cm}
+
+% configuration for page headers
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand*\MakeUppercase[1]{#1}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{}
+\setlength\headheight{14pt}
+\pagestyle{fancy}
+
+% set numbering to roman vor abstract and TOC
+\pagenumbering{roman}
+
+% Abstract
+% check thesis type
+\ifnum\type=3
+% if bachelor thesis then only on abstract either EN or DE depending on the thesis language
+ \ifeng
+  \selectlanguage{english}
+  \input{abstract_en}
+ \else
+  \selectlanguage{ngerman}
+  \input{abstract_de}
+ \fi
+\else
+% for Doctoral, Diploma, Master thesis abstracts
+ \selectlanguage{english}
+ \input{abstract_en}
+ \selectlanguage{ngerman}
+ \input{abstract_de}
+ \selectlanguage{english}
+\fi
+
+% set language in document 
+\ifeng
+ \selectlanguage{english}
+\else
+ \selectlanguage{ngerman}
+\fi
+
+% TOC
+\input{setup/table_of_contents}
+
+% set number to arabic again
+\newpage
+\fancyhead[L]{\leftmark}
+\pagenumbering{arabic}
+\setcounter{page}{1} 

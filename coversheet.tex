@@ -1,0 +1,242 @@
+%%Andreas Neubauer, May 2016
+% \documentclass[12pt,a4paper]{article}
+% \usepackage{graphicx}
+\textwidth 16.7cm
+\textheight 25cm
+\topmargin -2.7cm
+\oddsidemargin 0.25cm
+\parindent 0pt
+\pagestyle{empty}
+% \begin{document}
+%
+% -------- only change entries beginning here ----------------------------
+%
+% choose language of coverpage: german or english
+\newif\ifeng
+\engtrue
+%\engfalse
+%
+%
+% enter the title of the thesis
+%
+\def\title{Title of the thesis}
+%
+%
+% choose type of work: 0 ... Dissertation
+%                      1 ... Diplomarbeit
+%                      2 ... Masterarbeit
+%                      3 ... Bachelorarbeit
+\def\type{2}
+%
+%
+% enter name of degree, see examples below (as stated in your curriculum)
+%
+%
+%
+% e.g. Bachelorstudium
+%\def\degree{Bachelor of Science}
+%
+%
+% e.g. Masterstudium
+\def\degree{Diplom-Ingenieur}
+%\def\degree{Diplom-Ingenieurin}
+%\def\degree{Master of Science}
+%
+% e.g. Diplomstudium Lehramt
+%\def\degree{Magister der Naturwissenschaften}
+%\def\degree{Magistra der Naturwissenschaften}
+%
+% e.g. Doktorratsstudium
+%\def\degree{Doktor der technischen Wissenschaften}
+%\def\degree{Doktorin der technischen Wissenschaften}
+%\def\degree{Doktor der Naturwissenschaften}
+%\def\degree{Doktorin der Naturwissenschaften}
+%
+%
+% enter the study (Studienrichtung, as stated in your curriculum)
+% e.g. Bachelorstudium:
+%\def\study{Artificial Intelligence}
+%\def\study{Bioinformatics}
+%\def\study{Informatik}
+%
+% e.g. Diplomstudium:
+%\def\study{Lehramt Mathematik}
+%
+% e.g. Masterstudium:
+% \def\study{Artificial Intelligence}
+\def\study{Computer Science}
+%
+% e.g. Doktorratsstudium
+%\def\study{Technische Wissenschaften}
+%\def\study{Naturwissenschaften}
+%
+
+
+
+% If the names for the following entries are too long, break them into several
+% lines using \\
+%
+%
+% enter the name of the student
+%
+\def\name{Name of student}
+%
+%
+% enter the name of the institute (use translation for english version)
+% e.g.
+%\def\institute{Industrial Mathematics\\ Institute}
+%\def\institute{Institut f\"ur\\ Industriemathematik}
+%
+\def\institute{Institute of\newline Computer Graphics}
+%
+%
+% enter the name of the supervisor and first thesis examiner
+% only for type 0 (Dissertation) you need a second thesis examiner
+% 
+% for the german version you also have to enter the sex (male or female)
+% of the supervisor/examiners
+%
+\def\supervisor{Univ.-Prof. DI Dr. Marc Streit}
+\newif\ifsupvismale
+\supvismaletrue
+%\supvismalefalse
+%
+\def\secondexaminer{Name of 2. examiner}
+\newif\ifsecexmale
+\secexmaletrue
+%\secexmalefalse
+%
+%
+% if there has been assistance by a further person uncomment the following line
+% and enter the name. If there are several assistants separate the names by \\
+%
+\def\assist{Name of assistant}
+%\def\assist{Name of first assistant \\ Name of second assistant}
+%
+%
+% enter month year
+% (the month when you brought it to the Prüfungs- und Anerkennungsservice)
+%
+\def\date{month year}
+%
+% do not change anything below this line
+% -------------------------------------------------------------------------------
+%
+\def\ifundefined#1{\expandafter\ifx\csname#1\endcsname\relax}
+\DeclareFontShape{OT1}{cmss}{m}{n}
+  {<5><6><7><8><9><10><10.95><12><14.4><17.28><20.74><24.88><29.86><35.83>%
+   <42.99><51.59><67><77.38>cmss10}{}
+\DeclareFontShape{OT1}{cmss}{bx}{n}
+  {<5><6><7><8><9><10><10.95><12><14.4><17.28><20.74><24.88><29.86><35.83>%
+   <42.99><51.59><67><77.38>cmssbx10}{}
+\makeatletter
+\def\Huge{\@setfontsize\Huge{29.86pt}{36}}
+\makeatother
+%
+\unitlength 1cm
+\sffamily
+\begin{picture}(16.7,0)
+\ifeng
+ \put(11.5,-2.5){\includegraphics[width=5.2cm]{setup/cover/jku_de.pdf}}
+\else
+ \put(11.5,-2.5){\includegraphics[width=5.2cm]{setup/cover/jku_de.pdf}}
+\fi
+\put(12.9,-4.2){\begin{minipage}[t]{3.9cm}\footnotesize%
+\ifeng
+ Submitted by\\
+\else
+ Eingereicht von\\
+\fi
+{\bfseries\name}%
+\vskip 4mm%
+\ifeng
+ Submitted at\\
+\else
+ Angefertigt am\\
+\fi
+{\bfseries\institute}%
+\vskip 4mm%
+\ifcase\type%
+ \ifeng
+  Supervisor and\\ First Examiner\\
+ \else
+  \ifsupvismale%
+   Betreuer und\\ Erstbeurteiler\\
+  \else
+   Betreuerin und\\ Erstbeurteilerin\\
+  \fi
+ \fi
+ {\bfseries\supervisor}%
+ \vskip 4mm%
+ \ifeng
+  Second Examiner\\
+ \else
+  \ifsecexmale%
+   Zweitbeurteiler\\
+  \else
+   Zweitbeurteilerin\\
+  \fi
+ \fi
+ {\bfseries\secondexaminer}%
+\else
+ \ifeng
+  Supervisor\\
+ \else
+  \ifsupvismale%
+   Betreuer\\
+  \else
+   Betreuerin\\
+  \fi
+ \fi
+ {\bfseries\supervisor}%
+\fi
+\vskip 4mm%
+\ifundefined{assist}\else
+ \ifeng
+  Co-Supervisor\\
+ \else
+  Mitbetreuung\\
+ \fi
+ {\bfseries\assist}%
+\vskip 4mm%
+\fi
+\date
+\end{minipage}}
+\put(12.9,-25){\begin{minipage}[t]{3.9cm}\footnotesize%
+{\bfseries JOHANNES KEPLER\\
+\ifeng
+ UNIVERSITY
+\else
+ UNIVERSIT\"AT
+\fi
+LINZ}\\
+Altenbergerstra{\ss}e 69\\
+4040 Linz, \"Osterreich\\
+www.jku.at\\
+DVR 0093696
+\end{minipage}}
+\put(0,-12.2){\begin{minipage}[b]{12cm}\Huge\bfseries\title\end{minipage}}
+\put(0,-17.2){\includegraphics[width=4.4cm]{setup/cover/arr.pdf}}
+\put(0,-18.3){\begin{minipage}[t]{12cm}%
+\ifeng
+ {\large\ifcase\type Doctoral \or Diploma \or Master \or Bachelor \fi Thesis}%
+ \vskip 2mm%
+ to obtain the academic degree of%
+ \vskip 3mm%
+ {\large\degree}
+ \vskip 3mm%
+ in the \ifcase\type Doctoral \or Diploma \or Master's \or Bachelor's \fi Program
+\else
+ {\large\ifcase\type Dissertation\or Diplomarbeit\or Masterarbeit\or Bachelorarbeit\fi}%
+ \vskip 2mm%
+ zur Erlangung des akademischen Grades%
+ \vskip 3mm%
+ {\large\degree}
+ \vskip 3mm%
+ im \ifcase\type Doktoratsstudium \or Diplomstudium\or Masterstudium\or Bachelorstudium\fi
+\fi
+\vskip 3mm%
+{\large\study}
+\end{minipage}}
+\end{picture}
+% \end{document}
